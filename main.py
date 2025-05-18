@@ -1,3 +1,4 @@
+import sys
 from stats import word_count, count_char, dict_sort
 
 
@@ -16,7 +17,12 @@ def main():
     """
         The entry point into the program
     """
-    path = "./books/frankenstein.txt"
+
+    if len(sys.argv) < 2:
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
+
+    path = sys.argv[1]
     txt = get_book_text(path)
 
     print("============ BOOKBOT ============")
@@ -26,5 +32,6 @@ def main():
     print("--------- Character Count -------")
     dict_sort(count_char(txt))
     print("============= END ===============")
+
 
 main()
